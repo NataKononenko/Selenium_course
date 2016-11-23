@@ -4,7 +4,7 @@ var webdriver = require('selenium-webdriver'),
     until = webdriver.until,
     test = require('selenium-webdriver/testing');
 
-test.describe('Yandex weather', function() {
+test.describe('Login', function() {
     var driver;
 
     test.before(function() {
@@ -20,10 +20,11 @@ test.describe('Yandex weather', function() {
         });
     });
 
-    test.it('should append query to title', function() {
-        driver.get('http://www.yandex.ru');
-        var button = driver.wait(until.elementLocated(By.xpath("//div[@class='weather']")), 10000);
-        button.click();
+    test.it('Загружаем http://localhost/litecart/admin/', function() {
+    driver.get('http://localhost/litecart/admin/');
+        driver.findElement({ name: 'username' }).sendKeys('admin');
+        driver.findElement({ name: 'password' }).sendKeys('admin');
+        driver.findElement({ name: 'login' }).click();
     });
 
     test.after(function() {
